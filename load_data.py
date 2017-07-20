@@ -13,7 +13,6 @@ def load_file(filename):
         flines = csv.reader(f, delimiter=',', quotechar='"')
         for row in flines:
             output.append(row)
-    print output[0]
     return output
 
 def mk_float(s):
@@ -51,7 +50,8 @@ def mk_ticket(s):
 def process_lines(lines):
     passengers = []
     for info in lines[1:]:
-        passenger = {   "id": int(info[0]),
+        passenger = {
+            "id": int(info[0]),
             "survived": int(info[1]),
             "class": int(info[2]),
             "name": info[3],
@@ -62,9 +62,9 @@ def process_lines(lines):
             "ticket": mk_ticket(info[8]),
             "fare": float(info[9]),
             "cabin": info[10],
-            "embarked": mk_embarked(info[11]) }
+            "embarked": mk_embarked(info[11])
+        }
         passengers.append(passenger)
-        print passenger['cabin']
     return passengers
 
 def main():
